@@ -1,8 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { IntlProvider } from 'react-intl'
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+import queryApp from './reducers';
+import App from './containers/Query';
+
+const store = createStore(queryApp, applyMiddleware(thunk));
+
+render(
+  <Provider store={store}>
+    <IntlProvider>
+      <App />
+    </IntlProvider>
+  </Provider>,
+  document.getElementById('root')
+);
