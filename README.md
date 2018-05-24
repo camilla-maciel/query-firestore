@@ -6,5 +6,5 @@ This project makes queries on firestore easier (:
 
 ```bash
 npm install
-FIREBASE_API_KEY=<your-firebase-api-key> FIREBASE_PROJECT_ID=<your-firebase-project-id> npm start
+REACT_APP_FIREBASE_API_KEY=<your-firebase-api-key> REACT_APP_FIREBASE_PROJECT_ID=<your-firebase-project-id> npm start
 ```
