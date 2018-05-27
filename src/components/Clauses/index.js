@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { intlShape, injectIntl } from 'react-intl';
 
+import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -31,7 +32,14 @@ const Header = styled.div`
 const ClauseWrapper = styled.div`
   padding-top: 16px;
   display: flex;
+  align-items: center;
+`;
+
+const FieldsWrapper = styled.div`
+  display: flex;
   align-items: flex-end;
+  flex-wrap: wrap;
+  width: 80%;
 `;
 
 const Clauses = (props) => {
@@ -42,24 +50,26 @@ const Clauses = (props) => {
   props.clauses.forEach((clause, index) => {
     clauses.push(
       <ClauseWrapper key={index}>
-        <ClauseTextField
-          message={formatMessage(messages.field)}
-          value={clause.field}
-          name={'field'}
-          editClause={props.editClause}
-          index={index}
-        />
-        <ComparisonSelect clause={clause} index={index} editClause={props.editClause} />
-        <TypeSelect clause={clause} index={index} editClause={props.editClause} />
-        {clause.type !== TYPES.BOOLEAN ?
+        <FieldsWrapper>
           <ClauseTextField
-            message={formatMessage(messages.value)}
-            value={clause.value}
-            name={'value'}
+            message={formatMessage(messages.field)}
+            value={clause.field}
+            name={'field'}
             editClause={props.editClause}
             index={index}
           />
-        : <BooleanSelect clause={clause} index={index} editClause={props.editClause} /> }
+          <ComparisonSelect clause={clause} index={index} editClause={props.editClause} />
+          <TypeSelect clause={clause} index={index} editClause={props.editClause} />
+          {clause.type !== TYPES.BOOLEAN ?
+            <ClauseTextField
+              message={formatMessage(messages.value)}
+              value={clause.value}
+              name={'value'}
+              editClause={props.editClause}
+              index={index}
+            />
+          : <BooleanSelect clause={clause} index={index} editClause={props.editClause} /> }
+        </FieldsWrapper>
         <IconButton onClick={() => props.deleteClause(index)} > <DeleteIcon /> </IconButton>
         {clausesSize - 1 === index &&
           <IconButton onClick={props.addClause} > <AddIcon /> </IconButton>
@@ -71,9 +81,11 @@ const Clauses = (props) => {
   return (
     <ClausesWrapper>
       <Header>
-        <FormattedMessage {...messages.clauses} />
+        <Typography variant={'body1'}>
+          <FormattedMessage {...messages.clauses} />
+        </Typography>
         {!clausesSize &&
-          <IconButton onClick={props.addClause} > <AddIcon /> </IconButton>
+          <IconButton color={'secondary'} onClick={props.addClause} > <AddIcon /> </IconButton>
         }
       </Header>
       {clauses}

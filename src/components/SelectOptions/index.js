@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Typography from '@material-ui/core/Typography';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControl from '@material-ui/core/FormControl';
@@ -25,7 +26,11 @@ const StyledRadioGroup = styled(RadioGroup)`
 const SelectOptions = (props) => (
   <Wrapper>
     <FormControl component="fieldset">
-      <FormLabel component="legend"><FormattedMessage {...messages.select} /></FormLabel>
+      <FormLabel component="legend">
+        <Typography variant={'body1'} >
+          <FormattedMessage {...messages.select} />
+        </Typography>
+      </FormLabel>
       <StyledRadioGroup
         value={props.select}
         onChange={props.changeSelect}

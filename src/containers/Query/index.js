@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { intlShape, injectIntl } from 'react-intl';
 
+import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import TextField from '@material-ui/core/TextField';
@@ -44,6 +45,10 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
+const CenteredGrid = styled(Grid)`
+  justify-content: center;
+`;
+
 export class Query extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   editClause = (evt, index) => {
@@ -57,10 +62,12 @@ export class Query extends React.PureComponent { // eslint-disable-line react/pr
       <div>
         <AppBar>
           <Toolbar>
-            <FormattedMessage {...messages.header} />
+            <Typography variant={'title'} color="inherit">
+              <FormattedMessage {...messages.header} />
+            </Typography>
           </Toolbar>
         </AppBar>
-        <Grid container>
+        <CenteredGrid container>
           <Grid item xs={12} sm={10}>
             <Wrapper>
               <TextField
@@ -85,7 +92,7 @@ export class Query extends React.PureComponent { // eslint-disable-line react/pr
               <Result result={this.props.result} resultSize={this.props.resultSize} />
             </Wrapper>
           </Grid>
-        </Grid>
+        </CenteredGrid>
       </div>
     );
   }

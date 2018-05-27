@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
 
 import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
+import { ResultTextArea } from './ResultTextArea';
 
 import messages from 'containers/Query/messages';
 
@@ -16,16 +17,20 @@ const Wrapper = styled.div`
 
 const Result = (props) => (
   <Wrapper>
-    <FormattedMessage {...messages.result} />
-    <TextField
+    <Typography variant={'body1'} >
+      <FormattedMessage {...messages.result} />
+    </Typography>
+    <ResultTextArea
       value={JSON.stringify(props.result, null, 4)}
       multiline
-      rows={16}
+      rows={10}
     />
-    <FormattedMessage
-      {...messages.resultSize}
-      values={{ size: props.resultSize }}
-    />
+    <Typography variant={'body1'} >
+      <FormattedMessage
+        {...messages.resultSize}
+        values={{ size: props.resultSize }}
+      />
+    </Typography>
   </Wrapper>
 );
 
