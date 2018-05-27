@@ -15,6 +15,7 @@ const getInstance = (firebaseKeys) => {
   });
 
   firestore = firebase.firestore();
+  firestore.settings({ timestampsInSnapshots: true });
   loaded = true;
 
   return firestore;
