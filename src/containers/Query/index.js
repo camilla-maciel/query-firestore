@@ -4,15 +4,12 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { intlShape, injectIntl } from 'react-intl';
 
-import Typography from '@material-ui/core/Typography';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 
 import styled from 'styled-components';
-import { FormattedMessage } from 'react-intl';
 
+import AppBar from 'components/AppBar';
 import Clauses from 'components/Clauses';
 import Buttons from 'components/Buttons';
 import Result from 'components/Result';
@@ -60,13 +57,7 @@ export class Query extends React.PureComponent { // eslint-disable-line react/pr
     
     return (
       <div>
-        <AppBar>
-          <Toolbar>
-            <Typography variant={'title'} color="inherit">
-              <FormattedMessage {...messages.header} />
-            </Typography>
-          </Toolbar>
-        </AppBar>
+        <AppBar />
         <CenteredGrid container>
           <Grid item xs={12} sm={10}>
             <Wrapper>
