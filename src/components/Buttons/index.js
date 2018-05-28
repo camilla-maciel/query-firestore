@@ -17,7 +17,11 @@ const Wrapper = styled.div`
 
 const Buttons = (props) => (
   <Wrapper>
-    <Button variant={'raised'} color={'primary'} onClick={() => props.runQuery(props.collection, props.clauses, props.select)} >
+    <Button
+      variant={'raised'}
+      color={'primary'}
+      onClick={() => props.runQuery(props.collection, props.clauses, props.select)}
+    >
       <FormattedMessage {...messages.run} />
     </Button>
     <Button variant={'raised'} onClick={props.clear} >

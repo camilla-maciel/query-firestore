@@ -67,6 +67,7 @@ const Clauses = (props) => {
               name={'value'}
               editClause={props.editClause}
               index={index}
+              type={clause.type === TYPES.TIMESTAMP ? 'datetime-local' : clause.type}
             />
           : <BooleanSelect clause={clause} index={index} editClause={props.editClause} /> }
         </FieldsWrapper>

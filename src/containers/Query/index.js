@@ -36,7 +36,7 @@ import {
 import messages from './messages';
 import { COMPARISONS, TYPES, SELECT_OPTIONS } from '../../constants';
 
-const Wrapper = styled.div`
+const Wrapper = styled.form`
   padding: 80px 24px;
   display: flex;
   flex-direction: column;
@@ -65,6 +65,7 @@ export class Query extends React.PureComponent { // eslint-disable-line react/pr
                 label={formatMessage(messages.collection)}
                 value={this.props.collection}
                 onChange={this.props.changeCollection}
+                required
               />
               <SelectOptions select={this.props.select} changeSelect={this.props.changeSelect} />
               <Clauses

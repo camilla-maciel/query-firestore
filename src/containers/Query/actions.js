@@ -34,9 +34,14 @@ const getData = (snapshot) => {
 
 export const runQuery = (collection, clauses, select) =>
   (dispatch) => {
-    query(collection, clauses).then((snapshot) => {
-      const result = select === SELECT_OPTIONS.ALL_DATA ? getData(snapshot) : getIds(snapshot);
-      dispatch(setResult(result, snapshot.size));
+    if (collection) {
+      query(collection, clauses)
+        .then((snapshot) => {
+          const result = select === SELECT_OPTIONS.ALL_DATA ? getData(snapshot) : getIds(snapshot);
+          dispatch(setResult(result, snapshot.size));
+        })
+        .catch((error) => {
+          console.log('An error has ocurred', error);
+        });
     }
-    );
   };

@@ -15,6 +15,8 @@ const ClauseTextField = (props) => (
     value={props.value}
     name={props.name}
     onChange={(evt) => props.editClause(evt, props.index)}
+    required
+    type={props.type}
   />
 );
 
@@ -24,6 +26,7 @@ ClauseTextField.propTypes = {
   name: PropTypes.string,
   editClause: PropTypes.func,
   index: PropTypes.number,
+  type: PropTypes.string,
 };
 
 export default ClauseTextField;
