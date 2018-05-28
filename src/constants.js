@@ -11,6 +11,7 @@ export const TYPES = {
   NUMBER: 'number',
   BOOLEAN: 'boolean',
   TIMESTAMP: 'timestamp',
+  NULL: 'null',
 };
 
 export const SELECT_OPTIONS = {

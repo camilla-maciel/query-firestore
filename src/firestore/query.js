@@ -11,6 +11,8 @@ const parseClauseValue = (clause) => {
       return clause.value === 'true';
     case TYPES.TIMESTAMP:
       return new Date(clause.value);
+    case TYPES.NULL:
+      return null;
     default:
       return clause.value;
   }

@@ -60,7 +60,7 @@ const Clauses = (props) => {
           />
           <ComparisonSelect clause={clause} index={index} editClause={props.editClause} />
           <TypeSelect clause={clause} index={index} editClause={props.editClause} />
-          {clause.type !== TYPES.BOOLEAN ?
+          {clause.type !== TYPES.BOOLEAN && clause.type !== TYPES.NULL &&
             <ClauseTextField
               message={formatMessage(messages.value)}
               value={clause.value}
@@ -69,7 +69,9 @@ const Clauses = (props) => {
               index={index}
               type={clause.type === TYPES.TIMESTAMP ? 'datetime-local' : clause.type}
             />
-          : <BooleanSelect clause={clause} index={index} editClause={props.editClause} /> }
+          }
+          {clause.type === TYPES.BOOLEAN &&
+            <BooleanSelect clause={clause} index={index} editClause={props.editClause} />}
         </FieldsWrapper>
         <IconButton onClick={() => props.deleteClause(index)} > <DeleteIcon /> </IconButton>
         {clausesSize - 1 === index &&
